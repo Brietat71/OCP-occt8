@@ -1,0 +1,10 @@
+--- a/Approx_tmpl.hxx
++++ b/Approx_tmpl.hxx
+@@ -50,7 +50,6 @@
+ #include <Adaptor3d_Surface.hxx>
+ 
+ // module includes
+-#include <Approx_BSplineApproxInterp.hxx>
+ #include <Approx_Curve2d.hxx>
+ #include <Approx_Curve3d.hxx>
+ #include <Approx_CurveOnSurface.hxx>

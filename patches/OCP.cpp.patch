@@ -1,0 +1,88 @@
+--- a/OCP.cpp
++++ b/OCP.cpp
+@@ -318,10 +318,6 @@
+ void register_Vrml_enums(py::module&);
+ void register_VrmlAPI_enums(py::module&);
+ void register_RWGltf_enums(py::module&);
+-void register_IVtk_enums(py::module&);
+-void register_IVtkOCC_enums(py::module&);
+-void register_IVtkTools_enums(py::module&);
+-void register_IVtkVTK_enums(py::module&);
+ void register_DE_enums(py::module&);
+ void register_IMeshTools_enums(py::module&);
+ void register_IMeshData_enums(py::module&);
+@@ -639,10 +635,6 @@
+ void register_Vrml(py::module&);
+ void register_VrmlAPI(py::module&);
+ void register_RWGltf(py::module&);
+-void register_IVtk(py::module&);
+-void register_IVtkOCC(py::module&);
+-void register_IVtkTools(py::module&);
+-void register_IVtkVTK(py::module&);
+ void register_DE(py::module&);
+ void register_IMeshTools(py::module&);
+ void register_IMeshData(py::module&);
+@@ -717,7 +709,6 @@
+     register_Hermit_enums(m);
+     register_IGESConvGeom_enums(m);
+     register_IGESFile_enums(m);
+-    register_IVtkTools_enums(m);
+     register_IntAna_enums(m);
+     register_IntAna2d_enums(m);
+     register_IntImp_enums(m);
+@@ -826,7 +817,6 @@
+     register_HLRAlgo_enums(m);
+     register_HLRTopoBRep_enums(m);
+     register_IMeshData_enums(m);
+-    register_IVtk_enums(m);
+     register_IntCurve_enums(m);
+     register_IntCurveSurface_enums(m);
+     register_IntCurvesFace_enums(m);
+@@ -899,7 +889,6 @@
+     register_IFSelect_enums(m);
+     register_IGESData_enums(m);
+     register_IMeshTools_enums(m);
+-    register_IVtkVTK_enums(m);
+     register_Image_enums(m);
+     register_IntTools_enums(m);
+     register_ProjLib_enums(m);
+@@ -981,7 +970,6 @@
+     register_XmlXCAFDrivers_enums(m);
+     register_AIS_enums(m);
+     register_IGESCAFControl_enums(m);
+-    register_IVtkOCC_enums(m);
+     register_STEPCAFControl_enums(m);
+     register_StdSelect_enums(m);
+     register_StepDimTol_enums(m);
+@@ -1051,7 +1039,6 @@
+     register_Hermit(m);
+     register_IGESConvGeom(m);
+     register_IGESFile(m);
+-    register_IVtkTools(m);
+     register_IntAna(m);
+     register_IntAna2d(m);
+     register_IntImp(m);
+@@ -1160,7 +1147,6 @@
+     register_HLRAlgo(m);
+     register_HLRTopoBRep(m);
+     register_IMeshData(m);
+-    register_IVtk(m);
+     register_IntCurve(m);
+     register_IntCurveSurface(m);
+     register_IntCurvesFace(m);
+@@ -1233,7 +1219,6 @@
+     register_IFSelect(m);
+     register_IGESData(m);
+     register_IMeshTools(m);
+-    register_IVtkVTK(m);
+     register_Image(m);
+     register_IntTools(m);
+     register_ProjLib(m);
+@@ -1315,7 +1300,6 @@
+     register_XmlXCAFDrivers(m);
+     register_AIS(m);
+     register_IGESCAFControl(m);
+-    register_IVtkOCC(m);
+     register_STEPCAFControl(m);
+     register_StdSelect(m);
+     register_StepDimTol(m);

@@ -1,0 +1,13 @@
+--- a/OpenGl.cpp
++++ b/OpenGl.cpp
+@@ -3108,10 +3108,6 @@
+              (bool (OpenGl_ShaderManager::*)(  const handle<OpenGl_TextureSet> & ,  Graphic3d_TypeOfShadingModel ,  Graphic3d_AlphaMode ,  bool ,  bool ,   const handle<OpenGl_ShaderProgram> &  ) ) static_cast<bool (OpenGl_ShaderManager::*)(  const handle<OpenGl_TextureSet> & ,  Graphic3d_TypeOfShadingModel ,  Graphic3d_AlphaMode ,  bool ,  bool ,   const handle<OpenGl_ShaderProgram> &  ) >(&OpenGl_ShaderManager::BindFaceProgram),
+              R"#(Bind program for filled primitives rendering)#"  , py::arg("theTextures"),  py::arg("theShadingModel"),  py::arg("theAlphaMode"),  py::arg("theHasVertColor"),  py::arg("theEnableEnvMap"),  py::arg("theCustomProgram")
+           )
+-        .def("BindFaceProgram",
+-             (bool (OpenGl_ShaderManager::*)(  const handle<OpenGl_TextureSet> & ,  Graphic3d_TypeOfShadingModel ,  Graphic3d_AlphaMode ,  Aspect_InteriorStyle ,  bool ,  bool ,  bool ,   const handle<OpenGl_ShaderProgram> &  ) ) static_cast<bool (OpenGl_ShaderManager::*)(  const handle<OpenGl_TextureSet> & ,  Graphic3d_TypeOfShadingModel ,  Graphic3d_AlphaMode ,  Aspect_InteriorStyle ,  bool ,  bool ,  bool ,   const handle<OpenGl_ShaderProgram> &  ) >(&OpenGl_ShaderManager::BindFaceProgram),
+-             R"#(Bind program for filled primitives rendering)#"  , py::arg("theTextures"),  py::arg("theShadingModel"),  py::arg("theAlphaMode"),  py::arg("theInteriorStyle"),  py::arg("theHasVertColor"),  py::arg("theEnableEnvMap"),  py::arg("theEnableMeshEdges"),  py::arg("theCustomProgram")
+-          )
+         .def("BindLineProgram",
+              (bool (OpenGl_ShaderManager::*)(  const handle<OpenGl_TextureSet> & ,   const Aspect_TypeOfLine ,   const Graphic3d_TypeOfShadingModel ,   const Graphic3d_AlphaMode ,   const bool ,   const handle<OpenGl_ShaderProgram> &  ) ) static_cast<bool (OpenGl_ShaderManager::*)(  const handle<OpenGl_TextureSet> & ,   const Aspect_TypeOfLine ,   const Graphic3d_TypeOfShadingModel ,   const Graphic3d_AlphaMode ,   const bool ,   const handle<OpenGl_ShaderProgram> &  ) >(&OpenGl_ShaderManager::BindLineProgram),
+              R"#(Bind program for line rendering)#"  , py::arg("theTextures"),  py::arg("theLineType"),  py::arg("theShadingModel"),  py::arg("theAlphaMode"),  py::arg("theHasVertColor"),  py::arg("theCustomProgram")

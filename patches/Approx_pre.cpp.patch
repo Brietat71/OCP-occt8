@@ -1,0 +1,21 @@
+--- a/Approx_pre.cpp
++++ b/Approx_pre.cpp
+@@ -47,7 +47,6 @@
+ #include <Adaptor3d_Surface.hxx>
+ 
+ // module includes
+-#include <Approx_BSplineApproxInterp.hxx>
+ #include <Approx_Curve2d.hxx>
+ #include <Approx_Curve3d.hxx>
+ #include <Approx_CurveOnSurface.hxx>
+@@ -129,10 +128,6 @@
+     };
+ 
+ // pre-register typdefs+classes (topologically sorted)
+-    py::class_<Approx_BSplineApproxInterp , shared_ptr<Approx_BSplineApproxInterp>  >(
+-      m,
+-      "Approx_BSplineApproxInterp",R"#(Constrained least-squares B-spline curve approximation with exact interpolation constraints.)#"
+-    );
+     py::class_<Approx_Curve2d , shared_ptr<Approx_Curve2d>  >(
+       m,
+       "Approx_Curve2d",R"#(Makes an approximation for HCurve2d from Adaptor3d)#"

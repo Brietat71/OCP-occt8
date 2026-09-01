@@ -1,0 +1,101 @@
+--- a/Approx.cpp
++++ b/Approx.cpp
+@@ -48,7 +48,6 @@
+ #include <Adaptor3d_Surface.hxx>
+ 
+ // module includes
+-#include <Approx_BSplineApproxInterp.hxx>
+ #include <Approx_Curve2d.hxx>
+ #include <Approx_Curve3d.hxx>
+ #include <Approx_CurveOnSurface.hxx>
+@@ -120,82 +119,10 @@
+ 
+ // classes
+ 
+-    // Class Approx_BSplineApproxInterp from ./opencascade/Approx_BSplineApproxInterp.hxx
+-    klass = m.attr("Approx_BSplineApproxInterp");
+ 
+ 
+     // nested enums
+ 
+-    static_cast<py::class_<Approx_BSplineApproxInterp , shared_ptr<Approx_BSplineApproxInterp>  >>(klass)
+-    // constructors
+-        .def(py::init<  const NCollection_Array1<gp_Pnt> &,int,int,bool >()  , py::arg("thePoints"),  py::arg("theNbControlPts"),  py::arg("theDegree")=static_cast<int>(3),  py::arg("theContinuousIfClosed")=static_cast<bool>(false) )
+-    // custom constructors
+-    // methods
+-        .def("InterpolatePoint",
+-             (void (Approx_BSplineApproxInterp::*)( int ,  bool  ) ) static_cast<void (Approx_BSplineApproxInterp::*)( int ,  bool  ) >(&Approx_BSplineApproxInterp::InterpolatePoint),
+-             R"#(Marks a point to be exactly interpolated rather than approximated.)#"  , py::arg("thePointIndex"),  py::arg("theWithKink")=static_cast<bool>(false)
+-          )
+-        .def("Perform",
+-             (void (Approx_BSplineApproxInterp::*)() ) static_cast<void (Approx_BSplineApproxInterp::*)() >(&Approx_BSplineApproxInterp::Perform),
+-             R"#(Performs the fit using automatically computed parameters. Parameters are computed from input points using current parametrization alpha.)#" 
+-          )
+-        .def("Perform",
+-             (void (Approx_BSplineApproxInterp::*)(  const NCollection_Array1<double> &  ) ) static_cast<void (Approx_BSplineApproxInterp::*)(  const NCollection_Array1<double> &  ) >(&Approx_BSplineApproxInterp::Perform),
+-             R"#(Performs the fit with given parameters.)#"  , py::arg("theParams")
+-          )
+-        .def("PerformOptimal",
+-             (void (Approx_BSplineApproxInterp::*)( int  ) ) static_cast<void (Approx_BSplineApproxInterp::*)( int  ) >(&Approx_BSplineApproxInterp::PerformOptimal),
+-             R"#(Performs the fit with iterative parameter optimization using automatically computed initial parameters.)#"  , py::arg("theMaxIter")
+-          )
+-        .def("PerformOptimal",
+-             (void (Approx_BSplineApproxInterp::*)(  const NCollection_Array1<double> & ,  int  ) ) static_cast<void (Approx_BSplineApproxInterp::*)(  const NCollection_Array1<double> & ,  int  ) >(&Approx_BSplineApproxInterp::PerformOptimal),
+-             R"#(Performs the fit with iterative parameter optimization. Parameters of approximated points are re-projected onto the curve after each iteration to improve the fit.)#"  , py::arg("theParams"),  py::arg("theMaxIter")
+-          )
+-        .def("IsDone",
+-             (bool (Approx_BSplineApproxInterp::*)() const) static_cast<bool (Approx_BSplineApproxInterp::*)() const>(&Approx_BSplineApproxInterp::IsDone),
+-             R"#(Returns true if the fit was successfully computed.)#" 
+-          )
+-        .def("MaxError",
+-             (double (Approx_BSplineApproxInterp::*)() const) static_cast<double (Approx_BSplineApproxInterp::*)() const>(&Approx_BSplineApproxInterp::MaxError),
+-             R"#(Returns the maximum approximation error (distance at approximated points).)#" 
+-          )
+-        .def("SetParametrizationAlpha",
+-             (void (Approx_BSplineApproxInterp::*)( double  ) ) static_cast<void (Approx_BSplineApproxInterp::*)( double  ) >(&Approx_BSplineApproxInterp::SetParametrizationAlpha),
+-             R"#(Sets the parametrization power for automatic parameter computation. 0.0 = uniform, 0.5 = centripetal (default), 1.0 = chord-length.)#"  , py::arg("theAlpha")
+-          )
+-        .def("SetMinPivot",
+-             (void (Approx_BSplineApproxInterp::*)( double  ) ) static_cast<void (Approx_BSplineApproxInterp::*)( double  ) >(&Approx_BSplineApproxInterp::SetMinPivot),
+-             R"#(Sets the minimum pivot value for the Gauss solver. Matrices with pivots below this threshold are treated as singular.)#"  , py::arg("theMinPivot")
+-          )
+-        .def("SetClosedTolerance",
+-             (void (Approx_BSplineApproxInterp::*)( double  ) ) static_cast<void (Approx_BSplineApproxInterp::*)( double  ) >(&Approx_BSplineApproxInterp::SetClosedTolerance),
+-             R"#(Sets the relative tolerance for detecting closed curves. Closedness is detected when first/last points are within theRelTol * (bounding box diagonal).)#"  , py::arg("theRelTol")
+-          )
+-        .def("SetKnotInsertionTolerance",
+-             (void (Approx_BSplineApproxInterp::*)( double  ) ) static_cast<void (Approx_BSplineApproxInterp::*)( double  ) >(&Approx_BSplineApproxInterp::SetKnotInsertionTolerance),
+-             R"#(Sets the tolerance for detecting duplicate knot positions during insertion.)#"  , py::arg("theTol")
+-          )
+-        .def("SetConvergenceTolerance",
+-             (void (Approx_BSplineApproxInterp::*)( double  ) ) static_cast<void (Approx_BSplineApproxInterp::*)( double  ) >(&Approx_BSplineApproxInterp::SetConvergenceTolerance),
+-             R"#(Sets the convergence tolerance for parameter optimization. Optimization stops when relative error reduction falls below this value.)#"  , py::arg("theTol")
+-          )
+-        .def("SetProjectionTolerance",
+-             (void (Approx_BSplineApproxInterp::*)( double  ) ) static_cast<void (Approx_BSplineApproxInterp::*)( double  ) >(&Approx_BSplineApproxInterp::SetProjectionTolerance),
+-             R"#(Sets the tolerance for point projection onto curve during optimization.)#"  , py::arg("theTol")
+-          )
+-    // methods using call by reference i.s.o. return
+-    // static methods
+-    // static methods using call by reference i.s.o. return
+-    // operators
+-    // additional methods and static methods
+-    // properties
+-    // methods returning by ref wrapped as properties
+-       .def("Curve",
+-             ( const handle<Geom_BSplineCurve> & (Approx_BSplineApproxInterp::*)() const) static_cast< const handle<Geom_BSplineCurve> & (Approx_BSplineApproxInterp::*)() const>(&Approx_BSplineApproxInterp::Curve),
+-             R"#(Returns the resulting B-spline curve.)#"
+-             
+-         )
+-;
+ 
+     // Class Approx_Curve2d from ./opencascade/Approx_Curve2d.hxx
+     klass = m.attr("Approx_Curve2d");
+@@ -1061,7 +988,6 @@
+ 
+ // functions
+ 
+-// ./opencascade/Approx_BSplineApproxInterp.hxx
+ // ./opencascade/Approx_Curve2d.hxx
+ // ./opencascade/Approx_Curve3d.hxx
+ // ./opencascade/Approx_CurveOnSurface.hxx

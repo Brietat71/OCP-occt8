@@ -1,0 +1,43 @@
+--- a/collections_pre_3.cpp
++++ b/collections_pre_3.cpp
+@@ -120,7 +120,6 @@
+ #include <BOPDS_Interf.hxx>
+ #include <StepGeom_CompositeCurveSegment.hxx>
+ #include <AIS_GlobalStatus.hxx>
+-#include <IVtk_Types.hxx>
+ #include <IGESDimen_GeneralNote.hxx>
+ #include <SelectMgr_Selection.hxx>
+ #include <Message_Msg.hxx>
+@@ -205,7 +204,6 @@
+ #include <Geom2d_BoundedCurve.hxx>
+ #include <StepShape_Face.hxx>
+ #include <Font_SystemFont.hxx>
+-#include <IVtk_Types.hxx>
+ #include <StepGeom_SurfaceBoundary.hxx>
+ #include <OpenGl_GlTypes.hxx>
+ #include <Graphic3d_ShaderVariable.hxx>
+@@ -272,7 +270,6 @@
+ #include <HLRBRep_ShapeBounds.hxx>
+ #include <StepShape_OrientedEdge.hxx>
+ #include <Graphic3d_ZLayerId.hxx>
+-#include <IVtk_Types.hxx>
+ #include <Geom_BSplineCurve.hxx>
+ #include <Units_Quantity.hxx>
+ #include <BOPTools_ConnexityBlock.hxx>
+@@ -362,8 +359,6 @@
+     preregister_template_NCollection_List<handle<Graphic3d_Layer>>(m,"List_Graphic3d_Layer");
+     preregister_template_NCollection_List<HLRAlgo_BiPoint>(m,"List_HLRAlgo_BiPoint");
+     preregister_template_NCollection_List<HLRAlgo_Interference>(m,"List_HLRAlgo_Interference");
+-    preregister_template_NCollection_List<IVtk_IdType>(m,"List_IVtk_IdType");
+-    preregister_template_NCollection_List<IVtk_SelectionMode>(m,"List_IVtk_SelectionMode");
+     preregister_template_NCollection_List<IntPolyh_Couple>(m,"List_IntPolyh_Couple");
+     preregister_template_NCollection_List<IntSurf_PntOn2S>(m,"List_IntSurf_PntOn2S");
+     preregister_template_NCollection_List<IntTools_CurveRangeSample>(m,"List_IntTools_CurveRangeSample");
+@@ -396,7 +391,6 @@
+     preregister_template_NCollection_List<uint8_t>(m,"List_uint8_t");
+     preregister_template_NCollection_Map<BOPDS_Pair>(m,"Map_BOPDS_Pair");
+     preregister_template_NCollection_Map<handle<BOPDS_PaveBlock>>(m,"Map_BOPDS_PaveBlock");
+-    preregister_template_NCollection_Map<IVtk_IdType>(m,"Map_IVtk_IdType");
+     preregister_template_NCollection_Map<TCollection_AsciiString>(m,"Map_TCollection_AsciiString");
+     preregister_template_NCollection_Map<handle<TDF_Attribute>>(m,"Map_TDF_Attribute");
+     preregister_template_NCollection_Map<TDF_Label>(m,"Map_TDF_Label");

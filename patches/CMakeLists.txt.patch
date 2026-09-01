@@ -1,0 +1,30 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -15,18 +15,6 @@
+ 
+ find_package( fmt  REQUIRED )
+ find_package( pybind11 REQUIRED )
+-find_package( VTK REQUIRED
+-  COMPONENTS
+-    WrappingPythonCore
+-    RenderingCore
+-    RenderingOpenGL2
+-    CommonDataModel
+-    CommonExecutionModel
+-    freetype
+-  OPTIONAL_COMPONENTS
+-    mpi
+-)
+-message(STATUS "VTK ${VTK_VERSION} found")
+ find_package( OpenCASCADE REQUIRED )
+ 
+ include_directories( ${PROJECT_SOURCE_DIR} )
+@@ -37,7 +25,7 @@
+ target_include_directories( OCP PRIVATE ${OpenCASCADE_INCLUDE_DIR} )
+ 
+ target_link_libraries( OCP PRIVATE ${OpenCASCADE_LIBRARIES} )
+-target_link_libraries( OCP PRIVATE pybind11::pybind11 VTK::WrappingPythonCore VTK::RenderingCore VTK::CommonDataModel VTK::CommonExecutionModel fmt::fmt)
++target_link_libraries( OCP PRIVATE pybind11::pybind11 fmt::fmt)
+ 
+ set_target_properties( OCP
+                        PROPERTIES

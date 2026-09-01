@@ -1,0 +1,10 @@
+--- a/GeomFill_tmpl.hxx
++++ b/GeomFill_tmpl.hxx
+@@ -272,7 +272,6 @@
+ #include <GeomFill_FunctionGuide.hxx>
+ #include <GeomFill_Generator.hxx>
+ #include <GeomFill_Gordon.hxx>
+-#include <GeomFill_GordonBuilder.hxx>
+ #include <GeomFill_GuideTrihedronAC.hxx>
+ #include <GeomFill_GuideTrihedronPlan.hxx>
+ #include <GeomFill_Line.hxx>

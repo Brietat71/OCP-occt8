@@ -1,0 +1,84 @@
+--- a/GeomFill.cpp
++++ b/GeomFill.cpp
+@@ -270,7 +270,6 @@
+ #include <GeomFill_FunctionGuide.hxx>
+ #include <GeomFill_Generator.hxx>
+ #include <GeomFill_Gordon.hxx>
+-#include <GeomFill_GordonBuilder.hxx>
+ #include <GeomFill_GuideTrihedronAC.hxx>
+ #include <GeomFill_GuideTrihedronPlan.hxx>
+ #include <GeomFill_Line.hxx>
+@@ -1584,65 +1583,10 @@
+          )
+ ;
+ 
+-    // Class GeomFill_GordonBuilder from ./opencascade/GeomFill_GordonBuilder.hxx
+-    klass = m.attr("GeomFill_GordonBuilder");
+ 
+ 
+     // nested enums
+ 
+-    static_cast<py::class_<GeomFill_GordonBuilder , shared_ptr<GeomFill_GordonBuilder>  >>(klass)
+-    // constructors
+-        .def(py::init<  >()  )
+-    // custom constructors
+-    // methods
+-        .def("Init",
+-             (void (GeomFill_GordonBuilder::*)(  const NCollection_Array1<handle<Geom_BSplineCurve>> & ,   const NCollection_Array1<handle<Geom_BSplineCurve>> & ,   const NCollection_Array1<double> & ,   const NCollection_Array1<double> & ,  double ,  bool ,  bool  ) ) static_cast<void (GeomFill_GordonBuilder::*)(  const NCollection_Array1<handle<Geom_BSplineCurve>> & ,   const NCollection_Array1<handle<Geom_BSplineCurve>> & ,   const NCollection_Array1<double> & ,   const NCollection_Array1<double> & ,  double ,  bool ,  bool  ) >(&GeomFill_GordonBuilder::Init),
+-             R"#(Initializes the builder with compatible BSpline curves and intersection parameters.)#"  , py::arg("theProfiles"),  py::arg("theGuides"),  py::arg("theProfileParams"),  py::arg("theGuideParams"),  py::arg("theTolerance"),  py::arg("theIsUClosed")=static_cast<bool>(false),  py::arg("theIsVClosed")=static_cast<bool>(false)
+-          )
+-        .def("Perform",
+-             (void (GeomFill_GordonBuilder::*)() ) static_cast<void (GeomFill_GordonBuilder::*)() >(&GeomFill_GordonBuilder::Perform),
+-             R"#(Performs the Gordon surface construction.)#" 
+-          )
+-        .def("SetParallelMode",
+-             (void (GeomFill_GordonBuilder::*)( bool  ) ) static_cast<void (GeomFill_GordonBuilder::*)( bool  ) >(&GeomFill_GordonBuilder::SetParallelMode),
+-             R"#(Enables/disables parallel processing in internal stages. By default, single-thread mode is used.)#"  , py::arg("theToUseParallel")
+-          )
+-        .def("IsParallelMode",
+-             (bool (GeomFill_GordonBuilder::*)() const) static_cast<bool (GeomFill_GordonBuilder::*)() const>(&GeomFill_GordonBuilder::IsParallelMode),
+-             R"#(Returns true if internal parallel processing is enabled.)#" 
+-          )
+-        .def("IsDone",
+-             (bool (GeomFill_GordonBuilder::*)() const) static_cast<bool (GeomFill_GordonBuilder::*)() const>(&GeomFill_GordonBuilder::IsDone),
+-             R"#(Returns true if the surface was successfully constructed.)#" 
+-          )
+-    // methods using call by reference i.s.o. return
+-    // static methods
+-    // static methods using call by reference i.s.o. return
+-    // operators
+-    // additional methods and static methods
+-    // properties
+-    // methods returning by ref wrapped as properties
+-       .def("Surface",
+-             ( const handle<Geom_BSplineSurface> & (GeomFill_GordonBuilder::*)() const) static_cast< const handle<Geom_BSplineSurface> & (GeomFill_GordonBuilder::*)() const>(&GeomFill_GordonBuilder::Surface),
+-             R"#(Returns the resulting Gordon surface.)#"
+-             
+-         )
+-       .def("ProfileSurface",
+-             ( const handle<Geom_BSplineSurface> & (GeomFill_GordonBuilder::*)() const) static_cast< const handle<Geom_BSplineSurface> & (GeomFill_GordonBuilder::*)() const>(&GeomFill_GordonBuilder::ProfileSurface),
+-             R"#(Returns the intermediate surface skinned through profiles.)#"
+-             
+-         )
+-       .def("GuideSurface",
+-             ( const handle<Geom_BSplineSurface> & (GeomFill_GordonBuilder::*)() const) static_cast< const handle<Geom_BSplineSurface> & (GeomFill_GordonBuilder::*)() const>(&GeomFill_GordonBuilder::GuideSurface),
+-             R"#(Returns the intermediate surface skinned through guides.)#"
+-             
+-         )
+-       .def("TensorSurface",
+-             ( const handle<Geom_BSplineSurface> & (GeomFill_GordonBuilder::*)() const) static_cast< const handle<Geom_BSplineSurface> & (GeomFill_GordonBuilder::*)() const>(&GeomFill_GordonBuilder::TensorSurface),
+-             R"#(Returns the intermediate tensor product surface.)#"
+-             
+-         )
+-;
+ 
+     // Class GeomFill_Line from ./opencascade/GeomFill_Line.hxx
+     klass = m.attr("GeomFill_Line");
+@@ -5026,7 +4970,6 @@
+ // ./opencascade/GeomFill_FunctionGuide.hxx
+ // ./opencascade/GeomFill_Generator.hxx
+ // ./opencascade/GeomFill_Gordon.hxx
+-// ./opencascade/GeomFill_GordonBuilder.hxx
+ // ./opencascade/GeomFill_GuideTrihedronAC.hxx
+ // ./opencascade/GeomFill_GuideTrihedronPlan.hxx
+ // ./opencascade/GeomFill_Line.hxx

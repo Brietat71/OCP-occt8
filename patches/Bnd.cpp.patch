@@ -1,0 +1,12 @@
+--- a/Bnd.cpp
++++ b/Bnd.cpp
+@@ -169,7 +169,8 @@
+              R"#(Enlarges the box with a tolerance value. (minvalues-std::abs(<tol>) and maxvalues+std::abs(<tol>)) This means that the minimum values of its X, Y and Z intervals of definition, when they are finite, are reduced by the absolute value of Tol, while the maximum values are increased by the same amount.)#"  , py::arg("Tol")
+           )
+         .def("Get",
+-             (Bnd_Box::Limits (Bnd_Box::*)() const) static_cast<Bnd_Box::Limits (Bnd_Box::*)() const>(&Bnd_Box::Get),
++             [](const Bnd_Box& self){ auto l = self.Get();
++               return py::make_tuple(l.Xmin, l.Ymin, l.Zmin, l.Xmax, l.Ymax, l.Zmax); },
+              R"#(Returns the bounds of this bounding box as a Limits structure. The gap is included. If this bounding box is infinite (i.e. "open"), returned values may be equal to +/- Precision::Infinite(). If the box is void, returns raw internal values. Can be used with C++17 structured bindings:)#" 
+           )
+         .def("GetXMin",

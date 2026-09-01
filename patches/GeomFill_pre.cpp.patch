@@ -1,0 +1,21 @@
+--- a/GeomFill_pre.cpp
++++ b/GeomFill_pre.cpp
+@@ -269,7 +269,6 @@
+ #include <GeomFill_FunctionGuide.hxx>
+ #include <GeomFill_Generator.hxx>
+ #include <GeomFill_Gordon.hxx>
+-#include <GeomFill_GordonBuilder.hxx>
+ #include <GeomFill_GuideTrihedronAC.hxx>
+ #include <GeomFill_GuideTrihedronPlan.hxx>
+ #include <GeomFill_Line.hxx>
+@@ -553,10 +552,6 @@
+       m,
+       "GeomFill_Gordon",R"#(High-level Gordon surface construction from arbitrary curve networks.)#"
+     );
+-    py::class_<GeomFill_GordonBuilder , shared_ptr<GeomFill_GordonBuilder>  >(
+-      m,
+-      "GeomFill_GordonBuilder",R"#(Core mathematical kernel for Gordon surface construction via the Boolean sum method.)#"
+-    );
+     py::class_<GeomFill_LocFunction , shared_ptr<GeomFill_LocFunction>  >(
+       m,
+       "GeomFill_LocFunction",R"#()#"
