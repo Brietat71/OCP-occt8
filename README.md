@@ -37,4 +37,19 @@ here either way.
 
 ## Results
 
-*(pending)*
+### Phase 1 (2026-09-01, EPYC 7543, 63-solid CAD model)
+
+Workload: 199 bbox-overlapping pairwise `BRepAlgoAPI_Common` on real project
+geometry (collision checking — the dominant boolean load of our build).
+
+| | median of 3 |
+|---|---|
+| OCCT 7.9.3 (cadquery-ocp 7.9.3.1 wheel) | 15.6 s |
+| OCCT 8.0.1 (local build, DRAWEXE) | **13.1 s (−16 %)** |
+
+Capping the OCCT 7.9 `OSD_ThreadPool` to 8 threads changed nothing (15.57 s):
+these small booleans are effectively single-threaded, so the delta is the
+kernel itself, not thread-pool contention. Tcl-vs-Python per-call overhead is
+negligible at 199 ops.
+
+Verdict: real but modest. Phase 2 goes ahead.
