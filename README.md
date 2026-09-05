@@ -90,3 +90,28 @@ Reproduce with `./build-ocp8.sh` (Ubuntu 24.04, ~40 min on 32 cores).
 
 Every downstream script (BEMT, MBDyn export, UQ, mass audits) passed green,
 and the machine's published numbers did not move at all.
+
+## Python 3.14 (7 Sept 2026)
+
+Same sources, same patches, same script: only the interpreter changes. A
+second build directory keeps the 3.13 module alive next to the 3.14 one — both
+`.so` files can sit in the same directory on `PYTHONPATH`, CPython picks the
+one matching its ABI tag.
+
+```bash
+PY=/path/to/python3.14   # needs headers + libpython (uv-managed CPython has them)
+$PY -m pip install pybind11   # >= 3.1 supports 3.14
+cd /opt/occt8/ocp_src
+cmake -B build314 -S . -G Ninja -D CMAKE_BUILD_TYPE=Release \
+  -D Python_EXECUTABLE=$PY -D OpenCASCADE_DIR=/opt/occt8/install/lib/cmake/opencascade \
+  -D pybind11_DIR=$($PY -c "import pybind11; print(pybind11.get_cmake_dir())") \
+  -D CMAKE_CXX_STANDARD=17 -D CMAKE_CXX_FLAGS="-DFMT_HEADER_ONLY -fvisibility=hidden -w"
+ninja -C build314 -j $(nproc)          # 5 min 56 s on a 64-core EPYC 7543
+cp build314/OCP.cpython-314-*.so build/
+```
+
+Checked: `BRepAlgoAPI_Cut` box − sphere gives the analytic volume to 1e-6;
+build123d 0.11.1 runs unchanged (alias shim included); a 1 079-number
+geometry manifest of a full CAD build is identical to the 3.13 build at
+0.0 relative. Not done: a free-threaded (3.14t) build — the module does not
+declare `mod_gil_not_used`, so it would re-enable the GIL on import.

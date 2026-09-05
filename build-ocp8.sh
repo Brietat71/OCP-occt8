@@ -1,6 +1,7 @@
 #!/bin/bash
 # Build OCP (Python bindings) against OCCT 8.0.1, no VTK.
-# Tested: Ubuntu 24.04, gcc 13, Python 3.13, EPYC (any x86_64 should do).
+# Tested: Ubuntu 24.04, gcc 13, Python 3.13 and 3.14 (pybind11 >= 3.1), EPYC.
+# Second interpreter: rerun step 4 with PYTHON=... into another build dir (README).
 # Result: build/OCP.cpython-*.so — put its dir on PYTHONPATH (before any
 # installed cadquery-ocp wheel) plus LD_LIBRARY_PATH=<occt8>/lib, and import
 # compat/ocp8_compat.py before build123d (or drop a sitecustomize.py).
